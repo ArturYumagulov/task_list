@@ -1,5 +1,5 @@
 #!./venv_task/bin/python3
-from bottle import run, route, view, static_file, redirect
+from bottle import run, route, view, static_file, redirect, request
 
 
 class ToDoItem:
@@ -40,6 +40,13 @@ def index():
     tasks = tasks_db.values()
     return {"tasks": tasks}
     
-
+@route('/add_task', method="POST")
+def add_task():
+    desc = request.POST.description.strip()
+    if len(desc) > 0:
+        new_uid = max(tasks_db.keys()) + 1
+        t = ToDoItem(desc, new_uid)
+        tasks_db[new_uid] = t
+    return redirect("/")
 
 run(host="localhost", port="8080")

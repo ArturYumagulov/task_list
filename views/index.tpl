@@ -28,8 +28,8 @@
 	% end
 	</ul>
 	</br>
-	<form class="add">
-	<input type="text" placeholder="Добавить задачу"/>
+	<form action="/add_task" method='post'>
+		<input name="description" type="text" placeholder="Добавить задачу"/>
 	<button type="submit">+</button>
 	</div>
 </div
