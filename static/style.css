@@ -30,3 +30,7 @@ ul {
 .completed {
 	text-decoration: line-through;
 }
+
+p .line {
+	border: 1px solid red;
+}

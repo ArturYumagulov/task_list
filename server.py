@@ -22,7 +22,7 @@ def api_delete(uid):
     return redirect("/")
 
 
-@route("api/complete/uid:int")
+@route("/api/complete/<uid:int>")
 def api_complete(uid):
     t = s.query(ToDoItem).filter(ToDoItem.uid == uid).first()
     t.in_active = True
@@ -33,8 +33,13 @@ def api_complete(uid):
 @route("/")
 @view("index")
 def index():
+    total_tasks = s.query(ToDoItem).count()
+    incomplete = s.query(ToDoItem).filter(ToDoItem.in_active == False).count()
     tasks = s.query(ToDoItem).order_by(ToDoItem.uid)
-    return {"tasks": tasks}
+    if total_tasks >= 10:
+        return {"tasks": tasks, "total_tasks": total_tasks, "incomplete": incomplete, 'true': True}
+    else:
+        return {"tasks": tasks, "total_tasks": total_tasks, "incomplete": incomplete, 'true': False}
     
 @route('/add_task', method="POST")
 def add_task():

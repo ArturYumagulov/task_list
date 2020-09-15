@@ -6,9 +6,11 @@ $(document).ready(function() {
 
 	$(document).on('click', '.checkbox', function(){
 		$(this).parent().addClass('completed');
+
 		$(this).attr('disabled', true);
 		
-		uid = $(this).attr('data-uid');
-		$.get("/api/complete/" + uid);
+		var uid = $(this).attr('data-uid');
+		$.get('/api/comlete/' + uid);
+		//console.log("Запрос")
 	});
 })

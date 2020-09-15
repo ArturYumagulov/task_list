@@ -16,21 +16,28 @@
 		%if task.in_active:
 			<li class="completed">
 			<input class="checkbox" type="checkbox" data-uid="{{ task.uid }}" disabled='disabled' cheked='cheked'/>
-			<a class="remove" id="remove" href="#">x</a></li>
 		%else:
 			<li>
 			<input class="checkbox" data-uid="{{ task.uid }}" type="checkbox">
 		% end
 		{{ task }}
 		<a class="remove" href="api/delete/{{ task.uid }}">x</a>
-		<hr/>
 		</li>
 	% end
 	</ul>
 	</br>
-	<form action="/add_task" method='post'>
+	%if true:
+		<form action="/add_task" method='post'>
+		<input name="description" type="text" placeholder="Невозможно добавить задачу" disabled/>
+		<button type="submit">+</button>
+	%else:
+		<form action="/add_task" method='post'>
 		<input name="description" type="text" placeholder="Добавить задачу"/>
-	<button type="submit">+</button>
+		<button type="submit">+</button>
+	</div>
+	% end
+	<div>
+		<p class="line">Всего задач: {{ total_tasks }}, не выполнено: {{ incomplete }}</p>
 	</div>
 </div
 </body>
