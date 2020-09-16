@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Список задач</title>
 	<link rel="stylesheet" href="static/style.css">
-	<script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="static/script.js"></script>
 </head>
 <body>
